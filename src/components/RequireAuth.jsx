@@ -11,7 +11,7 @@ export class RequireAuth extends Component {
 
   componentDidMount() {
     axios
-      .get("http://192.168.1.35:3001/auth/auth", {
+      .get("https://cosci-education.herokuapp.com/auth/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },

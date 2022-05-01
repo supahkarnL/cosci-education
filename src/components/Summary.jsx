@@ -41,7 +41,7 @@ export default function Summary() {
 
   const fetchData = () => {
     axios
-      .get(`http://192.168.1.35:3001/classroom/byId/${id}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/byId/${id}`)
       .then((response) => {
         console.log(id);
         sedataSource(response.data);

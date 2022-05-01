@@ -29,7 +29,7 @@ export default function Calculate() {
 
   const fetchClassData = async () => {
     const response = await axios
-      .get(`http://192.168.1.35:3001/classroom/${userid}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/${userid}`)
       .catch((err) => console.log(err));
 
     if (response) {
@@ -80,12 +80,14 @@ export default function Calculate() {
   //submit
 
   const onSubmit = (data) => {
-    axios.post("http://192.168.1.35:3001/classroom", data).then((response) => {
-      history("/calculate");
-      console.log(data);
-      setOpen(!open);
-      fetchClassData();
-    });
+    axios
+      .post("https://cosci-education.herokuapp.com/classroom", data)
+      .then((response) => {
+        history("/calculate");
+        console.log(data);
+        setOpen(!open);
+        fetchClassData();
+      });
   };
 
   return (

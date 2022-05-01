@@ -63,7 +63,7 @@ export default function InputInfo() {
 
   const fetchData = () => {
     axios
-      .get(`http://192.168.1.35:3001/classroom/byId/${id}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/byId/${id}`)
       .then((response) => {
         console.log(id);
         setData(response.data);
@@ -151,7 +151,7 @@ export default function InputInfo() {
   const InputToApi = (studentdata) => {
     console.log(studentdata);
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/${id}`, {
+      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
         students: studentdata,
       })
       .then((response) => {
@@ -201,7 +201,7 @@ export default function InputInfo() {
     setStudentsdata(newStudentData);
 
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/${id}`, {
+      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
         students: newStudentData,
       })
       .then((response) => {
@@ -225,7 +225,7 @@ export default function InputInfo() {
     console.log(studentsdata);
 
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/${id}`, {
+      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
         students: newStudent,
       })
       .then((response) => {
@@ -253,7 +253,7 @@ export default function InputInfo() {
     setStudentsdata(newStudentData);
 
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/${id}`, {
+      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
         students: newStudentData,
       })
       .then((response) => {

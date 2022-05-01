@@ -59,7 +59,7 @@ export class StudentGrade extends Component {
   componentDidMount() {
     const { id } = this.props.params;
     axios
-      .get(`http://192.168.1.35:3001/classroom/calculate/${id}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/calculate/${id}`)
       .then((response) => {
         const testData = JSON.parse(response.data.students);
 
@@ -130,10 +130,13 @@ export class StudentGrade extends Component {
   PutGrade = (id, result, gradeid) => {
     console.log(gradeid);
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/calculate/${id}`, {
-        students: result,
-        gradetypeID: gradeid,
-      })
+      .put(
+        `https://cosci-education.herokuapp.com/classroom/byId/calculate/${id}`,
+        {
+          students: result,
+          gradetypeID: gradeid,
+        }
+      )
       .then((response) => {
         console.log(response);
       });
@@ -185,7 +188,7 @@ export class StudentGrade extends Component {
     this.state.students[index].studentscore = studentscore;
     console.log(this.state.students[index]);
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/${id}`, {
+      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
         students: this.state.students,
       })
       .then((response) => {
@@ -207,9 +210,12 @@ export class StudentGrade extends Component {
     const { id } = this.props.params;
     console.log(this.state.students);
     axios
-      .put(`http://192.168.1.35:3001/classroom/byId/calculate/${id}`, {
-        students: this.state.students,
-      })
+      .put(
+        `https://cosci-education.herokuapp.com/classroom/byId/calculate/${id}`,
+        {
+          students: this.state.students,
+        }
+      )
       .then((response) => {
         console.log(response);
       });

@@ -36,7 +36,7 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log("test");
     axios
-      .post("http://192.168.1.35:3001/auth", data)
+      .post("https://cosci-education.herokuapp.com/auth", data)
       .then(() => {
         console.log(data);
         Toast.fire({

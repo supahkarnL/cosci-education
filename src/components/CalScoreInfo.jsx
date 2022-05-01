@@ -73,7 +73,7 @@ export default function CalScoreInfo() {
 
   const fetchData = () => {
     axios
-      .get(`http://192.168.1.35:3001/classroom/byId/${id}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/byId/${id}`)
       .then((response) => {
         setDataSource(response.data);
         setStudentdata(JSON.parse(response.data.students));
@@ -83,7 +83,7 @@ export default function CalScoreInfo() {
 
   const fetchGrade = () => {
     axios
-      .get(`http://192.168.1.35:3001/classroom/calculate/${id}`)
+      .get(`https://cosci-education.herokuapp.com/classroom/calculate/${id}`)
       .then((response) => {
         setDataGrade(response.data.gradetypeID);
         console.log(dataGrade);
@@ -122,10 +122,13 @@ export default function CalScoreInfo() {
 
   const onSubmit = (data) => {
     axios
-      .put(`http://192.168.1.35:3001/classroom/calculatedata/${id}`, {
-        calculateinfo: selectorValue,
-        gradetypeID: SelectedGrade,
-      })
+      .put(
+        `https://cosci-education.herokuapp.com/classroom/calculatedata/${id}`,
+        {
+          calculateinfo: selectorValue,
+          gradetypeID: SelectedGrade,
+        }
+      )
       .then((response) => {
         history(`/studentgrade/${dataSource.uuid}`);
       });

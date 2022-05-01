@@ -23,29 +23,31 @@ function Login() {
 
   const login = () => {
     const data = { username: username, password: password };
-    axios.post("http://192.168.1.35:3001/auth/login", data).then((response) => {
-      if (response.data.error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: response.data.error,
-        });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Validation Success",
-          text: "You are logging in . . .",
-        });
-        localStorage.setItem("accessToken", response.data.token);
-        setAuthState({
-          username: response.data.username,
-          id: response.data.id,
-          userRole: response.data.userRole,
-          status: true,
-        });
-        navigate("/", { replace: true });
-      }
-    });
+    axios
+      .post("https://cosci-education.herokuapp.com/auth/login", data)
+      .then((response) => {
+        if (response.data.error) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: response.data.error,
+          });
+        } else {
+          Swal.fire({
+            icon: "success",
+            title: "Validation Success",
+            text: "You are logging in . . .",
+          });
+          localStorage.setItem("accessToken", response.data.token);
+          setAuthState({
+            username: response.data.username,
+            id: response.data.id,
+            userRole: response.data.userRole,
+            status: true,
+          });
+          navigate("/", { replace: true });
+        }
+      });
   };
 
   return (
