@@ -2,7 +2,7 @@ import React from "react";
 
 export default function indexFooter() {
   return (
-    <footer className="bg-gray-200 text-center lg:text-left">
+    <footer className="bg-gray-200 fixed inset-x-0 bottom-0">
       <div
         className="text-gray-700 text-center p-4"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}

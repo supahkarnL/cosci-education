@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,8 +14,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { Pie } from "react-chartjs-2";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import "chartjs-plugin-labels";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 ChartJS.register(
   CategoryScale,
@@ -67,6 +68,26 @@ export default function Summary() {
         },
       },
     },
+  };
+
+  const div2PDF = (e) => {
+    /////////////////////////////
+    // Hide/show button if you need
+    /////////////////////////////
+
+    const but = e.target;
+    but.style.display = "none";
+    let input = window.document.getElementsByClassName("div2PDF")[0];
+
+    html2canvas(input).then((canvas) => {
+      const img = canvas.toDataURL("image/JPEG");
+      const pdf = new jsPDF("l", "mm", "a4");
+      var width = pdf.internal.pageSize.getWidth();
+      var height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(img, "JPEG", 0, 0, width, height);
+      pdf.save("chart.pdf");
+      // but.style.display = "block";
+    });
   };
 
   function countingGrade(data) {
@@ -183,14 +204,6 @@ export default function Summary() {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      // datalabels: {
-      //   render: "percentage",
-      // },
-      labels: {
-        render: "percentage",
-        fontColor: "black",
-        precision: 2,
-      },
       legend: {
         position: "top",
       },
@@ -245,23 +258,33 @@ export default function Summary() {
   } else {
     console.log(useLocation().state.students);
     return (
-      <div
-        className="container h-screen mt-5 pt-5 
+      <div className=" div2PDF">
+        <div
+          className=" container h-screen mt-5 pt-5 
     rounded-md px-5 bg-white"
-      >
-        <div className="pl-5 text-4xl font-bold">{dataSource.subject}</div>
-        <div className="flex justify-evenly py-3 mt-5 border rounded-lg items-center">
-          <div className="">จำนวนนักเรียน: {students.length}</div>
-          <div className="">T-score ต่ำสุด: {min}</div>
-          <div className="">T-score สูงสุด: {max}</div>
-          <div className="">คะแนนเฉลี่ย: {mean}</div>
-          <div className="">ค่ามาตรฐาน: {sqr}</div>
-        </div>
-        <div className="container h-80 pt-2">
-          <Pie options={optionspie} data={pie} />
-        </div>
-        <div className="container h-96 pt-3">
-          <Bar options={options} data={data} />
+        >
+          <div className="flex justify-between">
+            <div className="pl-5 text-4xl font-bold">{dataSource.subject}</div>
+            <button
+              className={`inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out `}
+              onClick={(e) => div2PDF(e)}
+            >
+              export to pdf
+            </button>
+          </div>
+          <div className="flex justify-evenly py-3 mt-5 border rounded-lg items-center">
+            <div className="">จำนวนนักเรียน: {students.length}</div>
+            <div className="">T-score ต่ำสุด: {min}</div>
+            <div className="">T-score สูงสุด: {max}</div>
+            <div className="">คะแนนเฉลี่ย: {mean}</div>
+            <div className="">ค่ามาตรฐาน: {sqr}</div>
+          </div>
+          <div className="container h-80 pt-2">
+            <Pie options={optionspie} data={pie} />
+          </div>
+          <div className="container h-96 pt-3">
+            <Bar options={options} data={data} />
+          </div>
         </div>
       </div>
     );

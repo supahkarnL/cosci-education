@@ -5,6 +5,13 @@ import axios from "axios";
 import ReadOnlyRow2 from "./ReadOnlyRow2";
 import EditableRow2 from "./EditableRow2";
 import * as Yup from "yup";
+import * as XLSX from "xlsx";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import "../css/Home.css";
+import "./THSarabunNew-normal";
+// import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
+
 import {
   findingResultGrade,
   findingResultWithTypeA,
@@ -16,6 +23,24 @@ const SpecialGrade = [
   { grade: "A B+ B C+", id: "10", count: "4" },
   { grade: "A B+ B", id: "11", count: "3" },
 ];
+
+const columns = [
+  { title: "id", field: "studentid" },
+  { title: "Name", field: "studentname" },
+  { title: "score", field: "studentscore" },
+  { title: "Tscore", field: "Tscore" },
+  { title: "percentile", field: "percentile" },
+  { title: "result", field: "studentresult" },
+];
+// const styles = StyleSheet.create({
+//   header: {
+//     fontSize: 12,
+//     marginBottom: 20,
+//     textAlign: "center",
+//     color: "grey",
+//     fontFamily: "THSarabunNew",
+//   },
+// });
 
 export class StudentGrade extends Component {
   state = {
@@ -194,6 +219,39 @@ export class StudentGrade extends Component {
     });
   };
 
+  exportexcelgradetable = () => {
+    const newData = this.state.students.map((row) => {
+      delete row.tableData;
+      return row;
+    });
+    const workSheet = XLSX.utils.json_to_sheet(newData);
+    const workBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, "students");
+    //Buffer
+    let buf = XLSX.write(workBook, { bookType: "xlsx", type: "buffer" });
+    //Binary string
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
+    //Download
+    XLSX.writeFile(workBook, "StudentsData.xlsx");
+  };
+
+  exportpdfgradetable = () => {
+    const doc = new jsPDF();
+
+    // doc.addFont("THSarabanNew.ttf", "THSaraban");
+    doc.setFont("THSarabunNew");
+    // doc.setFontType("normal");
+    doc.setFontSize(28);
+    doc.text("ข้อมูลนักเรียน", 20, 10);
+    doc.autoTable({
+      styles: { font: "THSarabunNew" },
+      theme: "grid",
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: this.state.students,
+    });
+    doc.save("table.pdf");
+  };
+
   render() {
     const historyID = this.props.params.id;
     return (
@@ -238,6 +296,20 @@ export class StudentGrade extends Component {
             class="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
           >
             ตัดเกรด
+          </button>
+          <button
+            type="submit"
+            onClick={this.exportexcelgradetable}
+            className="finline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+          >
+            <p>Export to excel</p>
+          </button>
+          <button
+            type="submit"
+            onClick={this.exportpdfgradetable}
+            className="finline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+          >
+            <p>Export to pdf</p>
           </button>
         </div>
 

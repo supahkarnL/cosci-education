@@ -49,7 +49,7 @@ function Login() {
   };
 
   return (
-    <div style={{ backgroundColor: "#36609d" }} className="mx-auto">
+    <div style={{ backgroundColor: "#36609d" }} className="mx-auto h-screen">
       <IndexHeader />
       <div className="flex justify-center px-6 my-12">
         {/* Row */}
