@@ -1,0 +1,222 @@
+@font-face {
+  font-family: "THSarabunNew";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/THSarabunNew.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "baijamjuree-semibold-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/baijamjuree-semibold-webfont.woff") format("woff");
+}
+
+.text-2xl {
+  font-family: baijamjuree-semibold-webfont;
+}
+
+.Sidebar {
+  height: 100vh;
+  width: 200px;
+  background-color: #017efa;
+}
+
+.SidebarList {
+  height: auto;
+  padding: 0;
+  width: 100%;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.SidebarList .row {
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: #f8f9ff;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.SidebarList .row:hover {
+  cursor: pointer;
+  background-color: #036ed8;
+}
+
+.SidebarList #active {
+  background-color: #036ed8;
+}
+
+.row #icon {
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+
+#active {
+  background-color: white;
+}
+
+.row #title {
+  flex: 70%;
+  display: grid;
+  place-items: start;
+  font-size: 20px;
+  place-items: center;
+}
+
+.row #header {
+  flex: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.content-body {
+  margin-top: 30px;
+  padding-right: 16px;
+}
+
+.content-body2 {
+  margin-top: 30px;
+  padding-right: 16px;
+}
+
+.content-body .container-fluid {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  margin-bottom: 1.875rem;
+  background-color: #fff;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  border: 0px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 13px 0px rgb(82 63 105 / 5%);
+  flex-direction: row;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.body-header {
+  padding-top: 5;
+}
+
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.box {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+}
+
+.close-icon {
+  content: "x";
+  cursor: pointer;
+  position: fixed;
+  right: calc(15% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}

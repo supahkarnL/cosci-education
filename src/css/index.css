@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "THSarabunNew";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/THSarabunNew.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "baijamjuree-semibold-webfont";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/fonts/baijamjuree-semibold-webfont.woff") format("woff");
+}
