@@ -54,7 +54,7 @@ export default function Calculate() {
   const initialValues = {
     subject: "",
     section: "",
-    userid: userid,
+    teacherID: userid,
   };
 
   const validationSchema = Yup.object().shape({
