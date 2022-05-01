@@ -2,12 +2,14 @@ import React from "react";
 import { SidebarData } from "./Sidebardata";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { Link, useLocation } from "react-router-dom";
+
 import { Router } from "react-router-dom";
 import "../css/Home.css";
+import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
+  let history = useNavigate();
 
   return (
     <div className="">
@@ -40,8 +42,9 @@ const Sidebar = () => {
                 window.location.pathname == Menu.Link ? "bg-light-white" : ""
               }`}
               onClick={() => {
-                window.location.pathname = Menu.Link;
+                history(`${Menu.Link}`);
               }}
+
               // isActive={pathname === Menu.Link}
               // active={Menu.active}
             >
