@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: [/^node:.*/],
+      external: [
+        "react", // ignore react stuff
+        "react-dom",
+      ],
     },
   },
   server: {
