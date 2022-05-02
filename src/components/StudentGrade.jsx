@@ -7,7 +7,7 @@ import EditableRow2 from "./EditableRow2";
 import * as Yup from "yup";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import { applyPlugin } from "jspdf-autotable";
 import "../css/Home.css";
 import "./THSarabunNew-normal";
 // import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
@@ -248,7 +248,7 @@ export class StudentGrade extends Component {
 
   exportpdfgradetable = () => {
     const doc = new jsPDF();
-
+    applyPlugin(doc);
     // doc.addFont("THSarabanNew.ttf", "THSaraban");
     doc.setFont("THSarabunNew");
     // doc.setFontType("normal");
