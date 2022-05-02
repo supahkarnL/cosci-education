@@ -25,11 +25,12 @@ export default function Home() {
   const fetchClassData = async () => {
     const response = await axios
       .get(`https://cosci-education-thesis.herokuapp.com/classroom/${userid}`)
+      // .then((response) => result.JSON())
       .catch((err) => console.log(err));
 
     if (response) {
       const dataSource = response.data;
-      // setCalculateinfo(JSON.parse(response.data.calculateinfo));
+
       console.log("Info: ", dataSource);
 
       setDataSource(dataSource);
