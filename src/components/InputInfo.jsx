@@ -67,6 +67,8 @@ export default function InputInfo() {
       .then((response) => {
         console.log(id);
         setData(response.data);
+        console.log(response.data);
+        console.log(JSON.parse(response.data.students));
         setStudentsdata(JSON.parse(response.data.students));
       });
   };
