@@ -146,9 +146,10 @@ export default function CalScoreInfo() {
   var n = Studentdata.length;
   var mean = 0;
   var sum = 0;
-  var studentSort = Studentdata.sort();
-  var min = studentSort[studentSort.length - 1].studentscore;
-  var max = studentSort[0].studentscore;
+  let studentSort = Studentdata.sort((a, b) => a.studentscore - b.studentscore);
+
+  var min = studentSort[0].studentscore;
+  var max = studentSort[studentSort.length - 1].studentscore;
 
   for (var i = 0; i < Studentdata.length; i++) {
     var sum = sum + parseInt(Studentdata[i].studentscore);
