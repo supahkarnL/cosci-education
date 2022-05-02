@@ -63,7 +63,7 @@ export default function InputInfo() {
 
   const fetchData = () => {
     axios
-      .get(`https://cosci-education.herokuapp.com/classroom/byId/${id}`)
+      .get(`https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`)
       .then((response) => {
         console.log(id);
         setData(response.data);
@@ -151,9 +151,12 @@ export default function InputInfo() {
   const InputToApi = (studentdata) => {
     console.log(studentdata);
     axios
-      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
-        students: studentdata,
-      })
+      .put(
+        `https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`,
+        {
+          students: studentdata,
+        }
+      )
       .then((response) => {
         fetchData();
         console.log(response);
@@ -201,9 +204,12 @@ export default function InputInfo() {
     setStudentsdata(newStudentData);
 
     axios
-      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
-        students: newStudentData,
-      })
+      .put(
+        `https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`,
+        {
+          students: newStudentData,
+        }
+      )
       .then((response) => {
         fetchData();
         console.log(response);
@@ -225,9 +231,12 @@ export default function InputInfo() {
     console.log(studentsdata);
 
     axios
-      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
-        students: newStudent,
-      })
+      .put(
+        `https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`,
+        {
+          students: newStudent,
+        }
+      )
       .then((response) => {
         console.log(id);
         fetchData();
@@ -253,9 +262,12 @@ export default function InputInfo() {
     setStudentsdata(newStudentData);
 
     axios
-      .put(`https://cosci-education.herokuapp.com/classroom/byId/${id}`, {
-        students: newStudentData,
-      })
+      .put(
+        `https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`,
+        {
+          students: newStudentData,
+        }
+      )
       .then((response) => {
         console.log(newStudentData);
         // fetchData();

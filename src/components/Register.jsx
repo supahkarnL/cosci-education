@@ -36,7 +36,7 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log("test");
     axios
-      .post("https://cosci-education.herokuapp.com/auth", data)
+      .post("https://cosci-education-thesis.herokuapp.com/auth", data)
       .then(() => {
         console.log(data);
         Toast.fire({

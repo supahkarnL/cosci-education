@@ -24,7 +24,7 @@ export default function Home() {
 
   const fetchClassData = async () => {
     const response = await axios
-      .get(`https://cosci-education.herokuapp.com/classroom/${userid}`)
+      .get(`https://cosci-education-thesis.herokuapp.com/classroom/${userid}`)
       .catch((err) => console.log(err));
 
     if (response) {
@@ -70,7 +70,7 @@ export default function Home() {
 
   const onSubmit = (data) => {
     axios
-      .post("https://cosci-education.herokuapp.com/classroom", data)
+      .post("https://cosci-education-thesis.herokuapp.com/classroom", data)
       .then((response) => {
         history("/calculate");
         console.log(data);

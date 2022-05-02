@@ -24,7 +24,7 @@ function Login() {
   const login = () => {
     const data = { username: username, password: password };
     axios
-      .post("https://cosci-education.herokuapp.com/auth/login", data)
+      .post("https://cosci-education-thesis.herokuapp.com/auth/login", data)
       .then((response) => {
         if (response.data.error) {
           Swal.fire({
