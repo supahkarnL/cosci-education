@@ -13,13 +13,7 @@ export default function InputInfo() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
   const [data, setData] = useState([]);
-  const [studentsdata, setStudentsdata] = useState([
-    {
-      studentid: "0",
-      studentname: "",
-      studentscore: "0",
-    },
-  ]);
+  const [studentsdata, setStudentsdata] = useState([{}]);
 
   //add data
   const initialValues = {
@@ -68,8 +62,8 @@ export default function InputInfo() {
         console.log(id);
         setData(response.data);
         console.log(response.data);
-        console.log(JSON.parse(response.data.students));
-        setStudentsdata(JSON.parse(response.data.students));
+        console.log(JSON.parse(JSON.stringify(response.data.students)));
+        setStudentsdata(JSON.parse(JSON.stringify(response.data.students)));
       });
   };
 
