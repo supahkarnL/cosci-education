@@ -76,8 +76,8 @@ export default function CalScoreInfo() {
       .get(`https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`)
       .then((response) => {
         setDataSource(response.data);
-        setStudentdata(JSON.parse(response.data.students));
-        console.log(JSON.parse(response.data.students));
+        setStudentdata(response.data.students);
+        console.log(response.data.students);
       });
   };
 
