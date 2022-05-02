@@ -63,7 +63,7 @@ export class StudentGrade extends Component {
         `https://cosci-education-thesis.herokuapp.com/classroom/calculate/${id}`
       )
       .then((response) => {
-        const testData = JSON.parse(response.data.students);
+        const testData = response.data.students;
 
         const gradeid = response.data.gradetypeID[0].id;
         this.setState({ SelectedGrade: gradeid });
@@ -71,7 +71,7 @@ export class StudentGrade extends Component {
         const gradecount = response.data.gradetypeID[0].GradeCount;
         this.setState({ GradeCount: gradecount });
 
-        const calculateinfo = JSON.parse(response.data.calculateinfo);
+        const calculateinfo = response.data.calculateinfo;
         if (calculateinfo.type == "อิงกลุ่ม") {
           const result = findingResultGrade(testData, gradecount, gradeid);
           this.setState({ students: result, calculateType: "อิงกลุ่ม" });
