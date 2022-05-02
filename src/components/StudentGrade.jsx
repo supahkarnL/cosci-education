@@ -7,7 +7,7 @@ import EditableRow2 from "./EditableRow2";
 import * as Yup from "yup";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
-import { applyPlugin } from "jspdf-autotable";
+import autoTable from "jspdf-autotable";
 import "../css/Home.css";
 import "./THSarabunNew-normal";
 // import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
@@ -248,19 +248,19 @@ export class StudentGrade extends Component {
 
   exportpdfgradetable = () => {
     const doc = new jsPDF();
-    doc.applyPlugin();
+
     // doc.addFont("THSarabanNew.ttf", "THSaraban");
     doc.setFont("THSarabunNew");
     // doc.setFontType("normal");
     doc.setFontSize(28);
     doc.text("ข้อมูลนักเรียน", 20, 10);
-    doc.autoTable({
+    autoTable(doc, {
       styles: { font: "THSarabunNew" },
       theme: "grid",
       columns: columns.map((col) => ({ ...col, dataKey: col.field })),
       body: this.state.students,
     });
-    doc.save("table.pdf");
+    doc.save("studenttable.pdf");
   };
 
   render() {
