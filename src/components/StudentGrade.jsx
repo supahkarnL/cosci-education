@@ -248,7 +248,7 @@ export class StudentGrade extends Component {
 
   exportpdfgradetable = () => {
     const doc = new jsPDF();
-    applyPlugin(doc);
+    doc.applyPlugin();
     // doc.addFont("THSarabanNew.ttf", "THSaraban");
     doc.setFont("THSarabunNew");
     // doc.setFontType("normal");
