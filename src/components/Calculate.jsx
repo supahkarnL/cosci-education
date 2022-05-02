@@ -229,12 +229,6 @@ export default function Calculate() {
                                       <p className={`text-gray-700 text-base`}>
                                         Section: {data.section}
                                       </p>
-                                      <p
-                                        className={`text-gray-700 text-base mb-4 `}
-                                      >
-                                        ตัดเกรดรูปแบบ:{" "}
-                                        {JSON.parse(data.calculateinfo).type}
-                                      </p>
                                     </div>
                                   </div>
                                 </div>
@@ -260,12 +254,6 @@ export default function Calculate() {
                                       </h5>
                                       <p className="text-gray-700 text-base">
                                         Section: {data.section}
-                                      </p>
-                                      <p
-                                        className={`text-gray-700 text-base mb-4 `}
-                                      >
-                                        ตัดเกรดรูปแบบ:{" "}
-                                        {JSON.parse(data.calculateinfo).type}
                                       </p>
                                     </div>
                                   </div>
