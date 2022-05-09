@@ -63,6 +63,12 @@ function Login() {
             <h3 className="pt-4 text-2xl text-center">เข้าสู่ระบบ</h3>
 
             <div className="mb-4">
+              <label
+                className="block mb-2 text-sm font-bold text-gray-700"
+                htmlFor="username"
+              >
+                Username
+              </label>
               <input
                 className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:border-blue-600 focus:shadow-outline"
                 id="username"
