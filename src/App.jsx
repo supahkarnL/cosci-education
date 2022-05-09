@@ -16,8 +16,6 @@ import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 
 import Datatest from "./components/GradeCalculateTest/testCalculate";
-
-import axios from "axios";
 import useAuth from "./hooks/useAuth";
 import InputInfo from "./components/InputInfo";
 import CalScoreInfo from "./components/CalScoreInfo";

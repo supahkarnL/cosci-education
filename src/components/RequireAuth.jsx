@@ -45,11 +45,14 @@ export class RequireAuth extends Component {
     } else {
       console.log(false);
       return (
-        <div>
-          failed, you not login{" "}
-          <Link to="/login">
-            <button>click back</button>
-          </Link>
+        <div className="h-screen flex flex-col justify-center items-center">
+          <p className="text-5xl">Welcome to Cosci Education Website</p>
+          <div className="flex">
+            <p className="text-2xl mt-5 pl-5">you not login, go to</p>
+            <Link to="/login" className="text-2xl mt-5 pl-5 text-blue-600">
+              <button>login page</button>
+            </Link>
+          </div>
         </div>
       );
       // <Navigate to="/login" />;

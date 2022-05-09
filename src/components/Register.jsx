@@ -39,7 +39,7 @@ const Register = () => {
       .post("https://cosci-education-thesis.herokuapp.com/auth", data)
       .then(() => {
         console.log(data);
-        Toast.fire({
+        Swal.fire({
           icon: "success",
           title: "Register successfully",
         });
