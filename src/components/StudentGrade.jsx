@@ -50,6 +50,7 @@ export class StudentGrade extends Component {
     editFormData: { studentid: "", studentname: "", studentscore: "" },
     editStudenId: null,
     calculateType: "",
+    countresult: [],
   };
 
   componentDidUpdate() {
@@ -58,6 +59,7 @@ export class StudentGrade extends Component {
   }
   componentDidMount() {
     const { id } = this.props.params;
+
     axios
       .get(
         `https://cosci-education-thesis.herokuapp.com/classroom/calculate/${id}`
@@ -75,6 +77,8 @@ export class StudentGrade extends Component {
         if (calculateinfo.type == "อิงกลุ่ม") {
           const result = findingResultGrade(testData, gradecount, gradeid);
           this.setState({ students: result, calculateType: "อิงกลุ่ม" });
+          this.setState.countresult = countingGrade(result);
+          console.log(this.state.countresult);
 
           // this.PutGrade(id, result);
         } else if (calculateinfo.type == "อิงเกณฑ์") {
@@ -87,6 +91,7 @@ export class StudentGrade extends Component {
             gradeid
           );
           this.setState({ students: result, calculateType: "อิงเกณฑ์" });
+          this.setState.countresult = countingGrade(result);
         } else {
           console.log("error");
         }
@@ -263,6 +268,30 @@ export class StudentGrade extends Component {
     doc.save("studenttable.pdf");
   };
 
+  countingGrade(data) {
+    var temp = [];
+    var result = [];
+    for (var i = 0; i < data.length; i++) {
+      if (temp.indexOf(data[i].studentresult) == -1) {
+        temp.push(data[i].studentresult);
+        var _data = {};
+        _data.studentresult = data[i].studentresult;
+        _data.count = 1;
+
+        result.push(_data);
+      } else {
+        for (var j = 0; j < result.length; j++) {
+          if (result[j].studentresult === data[i].studentresult) {
+            var _x = parseInt(result[j].count) + 1;
+            result[j].count = _x;
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
   render() {
     const historyID = this.props.params.id;
     return (
@@ -369,6 +398,12 @@ export class StudentGrade extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div
+          className="container mt-5 pt-5 
+    rounded-md px-5 bg-white"
+        >
+          <div className="pt-5 text-md pl-5">A:</div>
         </div>
         <div className="flex justify-center gap-5 py-5 px-5">
           <button

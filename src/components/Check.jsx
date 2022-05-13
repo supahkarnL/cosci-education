@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Check() {
+  let history = useNavigate();
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1 py-2">
       <div
@@ -17,6 +19,9 @@ export default function Check() {
           <a
             href="/calculate"
             className="text-2xl pl-5 text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4"
+            onClick={() => {
+              history(`/calculate`);
+            }}
           >
             ตัดเกรด
           </a>
