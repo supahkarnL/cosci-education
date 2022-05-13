@@ -77,7 +77,7 @@ export class StudentGrade extends Component {
         if (calculateinfo.type == "อิงกลุ่ม") {
           const result = findingResultGrade(testData, gradecount, gradeid);
           this.setState({ students: result, calculateType: "อิงกลุ่ม" });
-          this.setState.countresult = countingGrade(result);
+          this.setState.countresult = this.countingGrade(result);
           console.log(this.state.countresult);
 
           // this.PutGrade(id, result);
