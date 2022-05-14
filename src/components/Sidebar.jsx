@@ -24,8 +24,8 @@ const Sidebar = () => {
         /> */}
         <div className="flex gap-x-4 items-center">
           <img
-            src="./src/assets/logo.png"
-            className={`cursor-pointer duration-500`}
+            src="https://sv1.picz.in.th/images/2022/05/13/Hc7K39.png"
+            className={`cursor-pointer duration-500 w-16`}
           />
           <h1
             className={`text-white origin-left font-medium text-xl duration-200 md:visible invisible `}

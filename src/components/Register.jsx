@@ -14,7 +14,7 @@ const Register = () => {
     userfname: "",
     userlname: "",
     userEmail: "",
-    userRole: "",
+    userRole: "type_1",
   };
 
   const validationSchema = Yup.object().shape({
@@ -214,41 +214,7 @@ const Register = () => {
                         />
                       </div>
                     </div>
-                    <div className="mb-4">
-                      <label className="block mb-2 text-sm font-bold text-gray-700">
-                        Role
-                      </label>
-                      <Field
-                        as="select"
-                        name="userRole"
-                        id="userRole"
-                        className="form-select
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                      >
-                        <option value="">Choose...</option>
-                        <option value="type_0">Student</option>
-                        <option value="type_1">Teacher</option>
-                      </Field>
-                      <ErrorMessage
-                        name="userRole"
-                        render={(msg) => (
-                          <p className="text-xs italic text-red-500">{msg}</p>
-                        )}
-                      />
-                    </div>
+
                     <div className="mb-6 text-center">
                       <button
                         className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"

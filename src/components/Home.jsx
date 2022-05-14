@@ -277,7 +277,10 @@ export default function Home() {
           <p class="text-2xl pb-2 border-b border-slate-800">ตัดเกรด</p>
 
           <div className="flex justify-center pt-3">
-            <img src="./src/assets/step1.png" className="max-w-sm h-auto" />
+            <img
+              src="https://sv1.picz.in.th/images/2022/05/13/Hc7weD.png"
+              className="max-w-sm h-auto"
+            />
           </div>
           <div className="pt-5 text-md pl-5">วิธีการทำงาน:</div>
           <div className="pt-5 text-md pl-5">

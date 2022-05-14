@@ -50,7 +50,6 @@ export class StudentGrade extends Component {
     editFormData: { studentid: "", studentname: "", studentscore: "" },
     editStudenId: null,
     calculateType: "",
-    countresult: [],
   };
 
   componentDidUpdate() {
@@ -77,8 +76,6 @@ export class StudentGrade extends Component {
         if (calculateinfo.type == "อิงกลุ่ม") {
           const result = findingResultGrade(testData, gradecount, gradeid);
           this.setState({ students: result, calculateType: "อิงกลุ่ม" });
-          this.setState.countresult = this.countingGrade(result);
-          console.log(this.state.countresult);
 
           // this.PutGrade(id, result);
         } else if (calculateinfo.type == "อิงเกณฑ์") {
@@ -91,7 +88,7 @@ export class StudentGrade extends Component {
             gradeid
           );
           this.setState({ students: result, calculateType: "อิงเกณฑ์" });
-          this.setState.countresult = countingGrade(result);
+          this.setState.countresult = this.countingGrade(result);
         } else {
           console.log("error");
         }
@@ -214,6 +211,31 @@ export class StudentGrade extends Component {
     this.setState({ editStudenId: null });
   };
 
+  //delete data
+  handleDeleteClick = (e, ID) => {
+    const { id } = this.props.params;
+    const newStudent = this.state.students;
+    var index = ID;
+    console.log(index);
+    newStudent.splice(index, 1);
+    this.setState({ students: newStudent });
+    console.log(this.state.students);
+
+    axios
+      .put(
+        `https://cosci-education-thesis.herokuapp.com/classroom/byId/${id}`,
+        {
+          students: this.state.students,
+        }
+      )
+      .then((response) => {
+        console.log(id);
+
+        console.log(response);
+      });
+    this.handleSubmitGradeChange();
+  };
+
   //putgradeandgotosummary
 
   handleconfirm = () => {
@@ -294,6 +316,7 @@ export class StudentGrade extends Component {
 
   render() {
     const historyID = this.props.params.id;
+    const countingResult = this.countingGrade(this.state.students);
     return (
       <div
         className="container h-screen mt-5 pt-5 
@@ -351,9 +374,26 @@ export class StudentGrade extends Component {
           >
             <p>Export to pdf</p>
           </button>
+          <div className="justify-self-end w-26 ">
+            จำนวนนักเรียนทั้งหมด: {this.state.students.length}
+          </div>
+        </div>
+        <div
+          className="container pt-2 
+    rounded-md px-5 bg-white"
+        >
+          <div className="flex justify-evenly py-3 mt-5 border rounded-lg items-center">
+            {countingResult.map((data) => (
+              <div className="text-md pl-5">
+                {"เกรด  " + data.studentresult + " : " + data.count + " คน"}
+              </div>
+            ))}
+          </div>
+          {/* 
+          <div className="pt-5 text-md pl-5">A:</div> */}
         </div>
 
-        <div class="flex flex-col h-4/6 pt-7">
+        <div class="flex flex-col h-4/6 pt-5">
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div class="overflow-hidden">
@@ -387,7 +427,7 @@ export class StudentGrade extends Component {
                               info={info}
                               index={index}
                               handleEditClick={this.handleEditClick}
-                              // handleDeleteClick={handleDeleteClick}
+                              handleDeleteClick={this.handleDeleteClick}
                             />
                           )}
                         </Fragment>
@@ -399,12 +439,7 @@ export class StudentGrade extends Component {
             </div>
           </div>
         </div>
-        <div
-          className="container mt-5 pt-5 
-    rounded-md px-5 bg-white"
-        >
-          <div className="pt-5 text-md pl-5">A:</div>
-        </div>
+
         <div className="flex justify-center gap-5 py-5 px-5">
           <button
             type="button"

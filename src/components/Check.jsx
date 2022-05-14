@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import pic from "../assets/unknownfeat.png";
 
 export default function Check() {
   let history = useNavigate();
@@ -32,10 +33,7 @@ export default function Check() {
         className="container h-screen mt-5 pt-5 
  "
       >
-        <img
-          src="./src/assets/unknownfeat.png"
-          className="max-w-3xl h-auto pt-20"
-        />
+        <img src={pic} className="max-w-3xl h-auto pt-20" />
       </div>
     </div>
   );

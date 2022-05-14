@@ -218,9 +218,11 @@ export default function InputInfo() {
   };
 
   //delete data
-  const handleDeleteClick = (ID) => {
+  const handleDeleteClick = (e, ID) => {
     const newStudent = [...studentsdata];
-    const index = studentsdata.findIndex((info) => info.studentid === ID);
+    // const index = studentsdata.findIndex((info) => info.studentid === ID);
+    var index = ID;
+    console.log(index);
     newStudent.splice(index, 1);
     setStudentsdata(newStudent);
     console.log(studentsdata);

@@ -26,7 +26,7 @@ const ReadOnlyRow = ({ info, index, handleEditClick, handleDeleteClick }) => {
           <Icon
             icon="mdi:delete-outline"
             style={{ fontSize: "22px", color: "red" }}
-            onClick={(e) => handleDeleteClick(e, info)}
+            onClick={(e) => handleDeleteClick(e, index)}
           />
         </div>
       </td>

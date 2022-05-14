@@ -1,4 +1,5 @@
 import React from "react";
+import pic from "../assets/unknownfeat.png";
 
 export default function ScoreRecord() {
   return (
@@ -27,10 +28,7 @@ export default function ScoreRecord() {
         className="container h-screen mt-5 pt-5 
 "
       >
-        <img
-          src="./src/assets/unknownfeat.png"
-          className="max-w-3xl h-auto pt-20"
-        />
+        <img src={pic} className="max-w-3xl h-auto pt-20" />
       </div>
     </div>
   );
