@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import IndexHeader from "./indexHeader";
@@ -8,6 +8,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Register = () => {
+  let history = useNavigate();
+
   const initialValues = {
     username: "",
     password: "",
@@ -43,6 +45,7 @@ const Register = () => {
           icon: "success",
           title: "Register successfully",
         });
+        history(`/Home`);
       })
       .catch((error) => {
         console.log(error);

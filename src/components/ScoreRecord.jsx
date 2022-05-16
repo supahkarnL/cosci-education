@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import pic from "../assets/unknownfeat.png";
 
 export default function ScoreRecord() {
@@ -15,12 +16,11 @@ export default function ScoreRecord() {
           ท่านสามารถใช้ฟีทเจอร์
         </p>
         <div className="flex justify-start">
-          <a
-            href="/calculate"
-            className="text-2xl pl-5 text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4"
-          >
-            ตัดเกรด
-          </a>
+          <Link to={"/calculate"}>
+            <a className="text-2xl pl-5 text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4">
+              ตัดเกรด
+            </a>
+          </Link>
           <p className="text-2xl ">ได้ตามปกติ</p>
         </div>
       </div>

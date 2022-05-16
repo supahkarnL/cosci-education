@@ -14,7 +14,7 @@ import Notfound from "./components/notfound";
 import Summary from "./components/Summary";
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
-
+import Team from "./components/Team";
 import Datatest from "./components/GradeCalculateTest/testCalculate";
 import useAuth from "./hooks/useAuth";
 import InputInfo from "./components/InputInfo";
@@ -46,6 +46,7 @@ function App() {
           <Route path="/summary/:id" element={<Summary />} />
           <Route path="/information" element={<Information />} />
           <Route path="/guide" element={<Guide />} />
+          <Route path="/team" element={<Team />} />
         </Route>
 
         {/* catch all */}

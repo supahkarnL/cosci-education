@@ -23,7 +23,7 @@ rounded-md px-5 bg-white "
         หรือเพิ่มวิชาใหม่ที่ต้องการทำการตัดเกรด
       </div>
       <div className="flex justify-center pt-3">
-        <img src={gif} className="max-w-4xl h-auto py-2" />
+        <img src={gif} className="max-w-2xl h-auto py-2" />
       </div>
       <div className="flex">
         <div className="pt-2 text-md pl-5">
@@ -72,7 +72,7 @@ rounded-md px-5 bg-white "
         จากนั้นเลือกเกรดที่ต้องการ
       </div>
       <div className="flex justify-center pt-3">
-        <img src={gif2} className="max-w-4xl h-auto py-2" />
+        <img src={gif2} className="max-w-4xl h-auto py-2 w-[32rem]" />
       </div>
       <div className="pt-2 text-md pl-5">
         4.ระบบทำการคำนวณเกรด และแสดงผลเกรดของนิสิตแต่ละบุคคลในรูปแบบตาราง

@@ -24,18 +24,21 @@ export const SidebarData = [
     Link: "/calculate",
     active: true,
   },
-  {
-    title: "ข้อมูลอาจารย์",
-    gap: true,
-    Link: "/information",
-    icon: "healthicons:ui-user-profile",
-    active: true,
-  },
+
   {
     title: "คู่มือการใข้งาน",
+    gap: true,
     src: "Chart_fill",
     Link: "/guide",
     icon: "carbon:document",
+    active: true,
+  },
+  {
+    title: "เกี่ยวกับเรา",
+    gap: true,
+    src: "fluent:people-team-16-regular",
+    Link: "/team",
+    icon: "fluent:people-team-16-regular",
     active: true,
   },
 ];
