@@ -45,7 +45,7 @@ const Register = () => {
           icon: "success",
           title: "Register successfully",
         });
-        history(`/Home`);
+        history(`/login`);
       })
       .catch((error) => {
         console.log(error);

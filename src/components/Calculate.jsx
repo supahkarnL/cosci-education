@@ -54,7 +54,7 @@ export default function Calculate() {
   const initialValues = {
     subject: "",
     section: "",
-    teacherID: userid,
+    userid: userid,
   };
 
   const validationSchema = Yup.object().shape({
@@ -80,11 +80,13 @@ export default function Calculate() {
   //submit
 
   const onSubmit = (data) => {
+    console.log(data);
     axios
       .post("https://cosci-education-thesis.herokuapp.com/classroom", data)
       .then((response) => {
-        history("/calculate");
-        console.log(data);
+        // history("/calculate");
+        console.log(response);
+
         setOpen(!open);
         fetchClassData();
       });
